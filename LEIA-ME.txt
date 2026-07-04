@@ -1,0 +1,34 @@
+PROJETO — Topologia da Malha Metroferroviária de São Paulo (Teoria dos Grafos)
+Disciplina: Comunicação e Redes (UFABC) — versão PRELIMINAR
+
+CONTEÚDO
+  artigo.tex          Artigo no padrão SBC (fonte principal)
+  refs.bib            Referências (BibTeX)
+  sbc-template.sty    Estilo SBC
+  sbc.bst             Estilo de bibliografia SBC
+  metodologia.pdf     Figura 1 — pipeline de construção/análise
+  espacos.pdf         Figura 2 — espaço L vs espaço P
+  central.pdf         Figura 3 — sub-rede central ilustrativa
+  viz_screenshot.png  Figura 4 — captura de tela da visualização Three.js
+  rede_sp.py          Definição da rede (linhas/estações) + build_graph()
+  export_grafo.py     Cálculo de métricas e exportação do grafo.json
+  figuras.py          Geração das três figuras vetoriais
+  grafo.json          Grafo serializado (usado pela visualização 3D)
+
+COMPILAÇÃO (linha de comando)
+  pdflatex artigo.tex
+  bibtex   artigo
+  pdflatex artigo.tex
+  pdflatex artigo.tex
+
+NO OVERLEAF
+  1. Faça upload de todos os arquivos deste zip.
+  2. Defina 'artigo.tex' como documento principal.
+  3. Compilador: pdfLaTeX.
+  4. Opcional: para hifenização em português, troque em artigo.tex a linha
+     \usepackage[T1]{fontenc}  por  \usepackage[brazil]{babel}
+     (e remova os \renewcommand de refname/figurename/tablename).
+
+REPRODUZIR MÉTRICAS E FIGURAS (Python 3 + networkx + matplotlib)
+  python3 export_grafo.py   # imprime N, M, <k>, Q e o ranking de intermediação
+  python3 figuras.py        # regenera metodologia.pdf, espacos.pdf, central.pdf

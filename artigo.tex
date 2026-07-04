@@ -1,0 +1,429 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{microtype}
+
+% Rotulos em portugues (o pacote de idioma do babel nao foi usado localmente;
+% se for compilar no Overleaf, pode trocar por \usepackage[brazil]{babel}).
+\renewcommand{\refname}{Referências}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\tablename}{Tabela}
+
+\urlstyle{same}
+\sloppy
+
+\title{Topologia da Malha Metroferroviária de São Paulo:\\
+  uma Análise via Teoria dos Grafos}
+
+\author{Vitor Eduardo Silva de Carvalho\inst{1}, Diego Naoki Sato Hanashiro\inst{1},\\
+  João Vitor Ribeiro Pereira\inst{1}, Joaquim Argolo Valente de Azambuja\inst{1}}
+
+\address{Bacharelado em Ciência e Tecnologia (BC\&T)\\
+  Universidade Federal do ABC (UFABC)\\
+  Av. dos Estados, 5001 -- 09210-580 -- Santo André -- SP -- Brasil
+  \email{\shortstack{\{vitor.eduardo, diego.hanashiro\}@aluno.ufabc.edu.br\\
+      \{joao.pereira, joaquim.azambuja\}@aluno.ufabc.edu.br}}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  The metropolitan rail network of São Paulo is the largest of its kind in
+  Brazil and a critical infrastructure for millions of daily trips. We model
+  this network as a graph in which vertices are stations and edges are the
+  direct connections between consecutive stations along each line, so that
+  interchange stations become shared, high-order vertices. Using the
+  \emph{space-L} and \emph{space-P} representations, we characterize the
+  topology through degree, characteristic path length, global efficiency,
+  clustering, betweenness and closeness centrality, small-world indices and
+  community structure, and we assess robustness by simulating random failures
+  and targeted attacks on the most central stations. The goal is to identify
+  the structural hubs whose disruption most degrades connectivity and to
+  compare the empirical topology with classical network models. This
+  preliminary report presents the problem, the formal model, the methodology
+  and an interactive three-dimensional visualization of the network.
+\end{abstract}
+
+\begin{resumo}
+  A malha metroferroviária metropolitana de São Paulo é a maior do país e uma
+  infraestrutura crítica para milhões de viagens diárias. Modelamos essa rede
+  como um grafo em que os vértices são estações e as arestas são as conexões
+  diretas entre estações consecutivas de cada linha, de modo que as estações de
+  baldeação se tornam vértices compartilhados e de alta ordem. Usando as
+  representações em \emph{espaço L} e \emph{espaço P}, caracterizamos a
+  topologia por meio de grau, comprimento característico de caminho, eficiência
+  global, agrupamento, centralidade de intermediação e de proximidade, índices
+  de mundo pequeno e estrutura de comunidades, e avaliamos a robustez simulando
+  falhas aleatórias e ataques direcionados às estações mais centrais. O objetivo
+  é identificar os \emph{hubs} estruturais cuja interrupção mais degrada a
+  conectividade e comparar a topologia empírica com modelos clássicos de redes.
+  Este relatório preliminar apresenta o problema, o modelo formal, a metodologia
+  e uma visualização tridimensional interativa da rede.
+\end{resumo}
+
+% =====================================================================
+\section{Introdução}
+% =====================================================================
+
+Sistemas de transporte público de grande porte são exemplos concretos de redes
+complexas: um conjunto de elementos (estações) ligados por relações físicas
+(trechos de via) cujo arranjo global determina propriedades emergentes como
+eficiência, vulnerabilidade e capacidade de reorganização diante de falhas
+\cite{newman2003}. A aplicação da teoria dos grafos a essas redes revelou que
+sistemas ferroviários e metroviários de cidades muito diferentes compartilham
+assinaturas estruturais recorrentes --- caráter de mundo pequeno, presença de
+poucos \emph{hubs} de alta centralidade e distribuições de grau de cauda longa
+\cite{latora2002,sen2003,derrible2010}.
+
+A Região Metropolitana de São Paulo (RMSP) possui a maior rede sobre trilhos do
+Brasil. No início de 2026, a malha integrada operada por Metrô, CPTM e
+concessionárias soma cerca de $388$~km de extensão, $14$ linhas e $181$ estações
+únicas, já contabilizando a Linha 17-Ouro \cite{metrosp2026,cptm2026}. Apesar de
+sua escala, essa rede raramente é estudada sob a ótica formal da teoria dos
+grafos, o que motiva a pergunta central deste trabalho: \emph{quais estações são
+estruturalmente mais críticas para a conectividade da malha e quão robusta é a
+rede à perda dessas estações?}
+
+Neste relatório preliminar modelamos a malha metroferroviária de São Paulo como
+um grafo em que cada estação é um vértice e cada ligação direta entre estações
+consecutivas de uma mesma linha é uma aresta. Estações de baldeação, servidas
+por mais de uma linha, tornam-se naturalmente vértices de maior grau,
+concentrando o tráfego entre linhas. Sobre esse modelo definimos métricas
+clássicas de centralidade e de estrutura, além de um experimento de robustez que
+compara falhas aleatórias e ataques direcionados. Embora o foco aqui seja o
+transporte sobre trilhos, a mesma formulação estende-se à rede multimodal
+(incluindo terminais rodoviários e corredores de ônibus), o que fica indicado
+como desdobramento natural. As Seções seguintes apresentam as definições
+formais, a descrição do problema, os dados, a metodologia e a divisão de
+responsabilidades do grupo. Resultados quantitativos e discussão serão
+apresentados no relatório final.
+
+% =====================================================================
+\section{Definições e Fundamentação Teórica}
+% =====================================================================
+
+\subsection{Grafo e representações da rede}
+
+Modelamos a rede como um grafo simples, não direcionado e conexo
+$G=(V,E)$, em que $V$ é o conjunto de $N=|V|$ estações e $E$ é o conjunto de
+$M=|E|$ arestas. Adota-se a representação em \emph{espaço L}
+\cite{vonferber2009}: existe uma aresta $\{i,j\}\in E$ se, e somente se, as
+estações $i$ e $j$ são consecutivas em pelo menos uma linha. A rede é descrita
+pela matriz de adjacência $A=[a_{ij}]$, com $a_{ij}=1$ se $\{i,j\}\in E$ e
+$a_{ij}=0$ caso contrário.
+
+Opcionalmente, atribui-se a cada aresta um peso $w_{ij}>0$ representando o custo
+do trecho --- por exemplo a distância geográfica ou o tempo médio de percurso
+entre as estações. A análise pode então ser conduzida na versão não ponderada
+($w_{ij}=1$), que evidencia a estrutura combinatória, ou na versão ponderada,
+mais próxima da experiência de deslocamento.
+
+Uma representação complementar é o \emph{espaço P} \cite{vonferber2009}, em que
+duas estações são adjacentes se pertencem a uma mesma linha (independentemente
+de serem consecutivas). Nesse espaço, a distância entre dois vértices
+corresponde ao número mínimo de \emph{baldeações} necessárias para ir de uma
+estação a outra, o que a torna especialmente adequada para analisar a
+conveniência percebida pelo usuário.
+
+\subsection{Grau e distribuição de grau}
+
+O grau de um vértice $i$ é o número de estações a ele diretamente conectadas,
+\begin{equation}
+  k_i = \sum_{j\in V} a_{ij},
+\end{equation}
+e o grau médio da rede é $\langle k\rangle = \tfrac{1}{N}\sum_{i} k_i = 2M/N$.
+Em redes metroviárias, a maioria das estações é intermediária ($k_i=2$),
+enquanto estações terminais têm $k_i=1$ e estações de baldeação apresentam
+$k_i\geq 3$. A distribuição de grau $P(k)$ e sua eventual cauda longa permitem
+comparar a rede com modelos aleatórios e livres de escala
+\cite{barabasi1999,derrible2010}.
+
+\subsection{Caminhos, comprimento característico e eficiência}
+
+Seja $d(i,j)$ o comprimento do caminho mais curto (número de arestas, ou soma de
+pesos) entre $i$ e $j$. O comprimento característico de caminho é a média sobre
+todos os pares distintos,
+\begin{equation}
+  L = \frac{1}{N(N-1)} \sum_{i\neq j} d(i,j),
+\end{equation}
+e o diâmetro é $D=\max_{i,j} d(i,j)$. Como $d(i,j)$ diverge para pares em
+componentes distintas, é conveniente usar a eficiência global
+\cite{latora2001}, que permanece bem definida sob desconexão:
+\begin{equation}
+  E_{\mathrm{glob}}(G) = \frac{1}{N(N-1)} \sum_{i\neq j} \frac{1}{d(i,j)}.
+\end{equation}
+A eficiência global mede a facilidade média de comunicação na rede e será o
+principal indicador de desempenho no experimento de robustez.
+
+\subsection{Agrupamento e mundo pequeno}
+
+O coeficiente de agrupamento local mede a fração de pares de vizinhos de $i$ que
+também são vizinhos entre si:
+\begin{equation}
+  C_i = \frac{2\,e_i}{k_i(k_i-1)}, \qquad k_i \geq 2,
+\end{equation}
+onde $e_i$ é o número de arestas entre os $k_i$ vizinhos de $i$; o coeficiente
+médio é $C=\tfrac{1}{N}\sum_i C_i$. Uma rede é dita de \emph{mundo pequeno}
+\cite{watts1998} quando exibe $L$ próximo ao de um grafo aleatório equivalente e
+$C$ muito maior. Isso é quantificado pelo índice
+\begin{equation}
+  \sigma = \frac{C/C_{\mathrm{rand}}}{L/L_{\mathrm{rand}}},
+\end{equation}
+com $\sigma>1$ indicando comportamento de mundo pequeno.
+
+\subsection{Centralidade}
+
+A importância estrutural de uma estação é medida por índices de centralidade. A
+centralidade de intermediação \cite{freeman1977} quantifica quanto um vértice
+atua como ponte nos caminhos mais curtos:
+\begin{equation}
+  C_B(v) = \sum_{s\neq v\neq t} \frac{\sigma_{st}(v)}{\sigma_{st}},
+\end{equation}
+onde $\sigma_{st}$ é o número de caminhos mínimos entre $s$ e $t$ e
+$\sigma_{st}(v)$ é o número desses caminhos que passam por $v$. Estações de
+baldeação tendem a maximizar $C_B$, pois concentram os fluxos entre linhas. A
+centralidade de proximidade,
+\begin{equation}
+  C_C(v) = \frac{N-1}{\sum_{j} d(v,j)},
+\end{equation}
+mede quão próxima uma estação está de todas as demais. Em redes de transporte,
+os vértices que combinam alta intermediação e alto grau funcionam como
+\emph{hubs} de transferência e desempenham papel análogo ao dos aeroportos
+concentradores em redes aéreas \cite{guimera2005}.
+
+\subsection{Estrutura de comunidades}
+
+Comunidades são grupos de estações mais densamente conectados entre si do que
+com o resto da rede --- em geral associados a corredores ou regiões da malha. A
+qualidade de uma partição $\{c_i\}$ é medida pela modularidade
+\cite{newman2006}:
+\begin{equation}
+  Q = \frac{1}{2M} \sum_{i,j}
+      \left( a_{ij} - \frac{k_i k_j}{2M} \right)
+      \delta(c_i, c_j),
+\end{equation}
+onde $\delta(c_i,c_j)=1$ se $i$ e $j$ estão na mesma comunidade e $0$ caso
+contrário. A detecção é feita pela otimização gulosa de $Q$ com o método de
+Louvain \cite{blondel2008}.
+
+\subsection{Robustez e conectividade algébrica}
+
+A robustez é avaliada pela degradação da rede sob remoção sucessiva de vértices.
+Seja $S(f)$ o tamanho relativo da maior componente conexa após remover uma
+fração $f$ das estações,
+\begin{equation}
+  S(f) = \frac{|V_{\mathrm{LCC}}(f)|}{N}.
+\end{equation}
+Comparam-se duas estratégias: remoção \emph{aleatória} (falha) e remoção
+\emph{direcionada} aos vértices de maior centralidade (ataque)
+\cite{berche2009}. Como indicador espectral complementar, usa-se a conectividade
+algébrica $\lambda_2$, o segundo menor autovalor da matriz laplaciana
+$\mathbf{L}=\mathbf{D}-\mathbf{A}$, onde $\mathbf{D}$ é a matriz diagonal de
+graus; valores maiores de $\lambda_2$ indicam maior dificuldade de fragmentar a
+rede.
+
+% =====================================================================
+\section{Descrição do Problema}
+% =====================================================================
+
+O problema central é caracterizar a estrutura topológica da malha
+metroferroviária de São Paulo e identificar suas vulnerabilidades. De forma mais
+específica, buscamos responder:
+
+\begin{enumerate}
+  \item \textbf{Hierarquia de centralidade.} Quais estações concentram os
+    fluxos de caminho mínimo, isto é, apresentam maior centralidade de
+    intermediação? A hipótese é que estações de baldeação do centro expandido
+    (por exemplo Sé, Luz, Brás, Paulista/Consolação, Paraíso e Ana Rosa)
+    dominem a hierarquia.
+  \item \textbf{Caráter de mundo pequeno.} A rede de São Paulo exibe os índices
+    de mundo pequeno observados em outros sistemas metroviários
+    \cite{latora2002,sen2003}?
+  \item \textbf{Robustez.} Quão sensível é a conectividade global à perda de
+    poucas estações críticas? Qual a diferença entre falhas aleatórias e
+    ataques direcionados aos \emph{hubs}?
+  \item \textbf{Comunidades.} A partição de modularidade máxima recupera
+    agrupamentos com significado geográfico (regiões e corredores) da malha?
+\end{enumerate}
+
+Trata-se de um problema de análise estrutural de grafos de porte médio
+($N\sim 10^2$), tratável de forma exata: todos os índices acima admitem
+algoritmos polinomiais, com destaque para o algoritmo de Brandes para
+centralidade de intermediação, de complexidade $O(NM)$ em grafos não ponderados.
+
+% =====================================================================
+\section{Dados e Modelagem}
+% =====================================================================
+
+\subsection{Fonte de dados}
+
+Os dados provêm do mapa oficial da rede metroferroviária da RMSP, mantido pela
+Companhia do Metropolitano de São Paulo (Metrô) e pela Companhia Paulista de
+Trens Metropolitanos (CPTM) \cite{metrosp2026,cptm2026}. Consideram-se as linhas
+do Metrô (1-Azul, 2-Verde, 3-Vermelha, 4-Amarela, 5-Lilás, 15-Prata e 17-Ouro)
+e as linhas de trens metropolitanos (7-Rubi, 8-Diamante, 9-Esmeralda,
+10-Turquesa, 11-Coral, 12-Safira e 13-Jade), operadas por Metrô, CPTM,
+ViaQuatro, ViaMobilidade e demais concessionárias. Para cada linha extrai-se a
+sequência ordenada de estações; a lista de estações e a topologia refletem a
+configuração vigente no início de 2026.
+
+\subsection{Construção do grafo}
+
+O grafo $G=(V,E)$ é construído no espaço L da seguinte forma. Cada estação
+distinta gera um único vértice, identificado por seu nome canônico; assim, uma
+estação de baldeação servida por várias linhas corresponde a \emph{um} vértice,
+e não a um por linha. Para cada linha, adicionam-se arestas entre estações
+consecutivas em sua sequência. Formalmente, se a linha $\ell$ é a sequência
+$(s_1^\ell, s_2^\ell, \dots, s_{n_\ell}^\ell)$, então
+\begin{equation}
+  E = \bigcup_{\ell}
+      \bigl\{\, \{s_p^\ell,\, s_{p+1}^\ell\} \;:\; 1 \le p < n_\ell \,\bigr\}.
+\end{equation}
+Como o mesmo vértice pode receber arestas de linhas diferentes, o grau de uma
+estação de baldeação cresce com o número de linhas que a atravessam, tornando-a
+um ponto de articulação natural entre as regiões da malha. A
+Figura~\ref{fig:pipeline} resume o \emph{pipeline} de construção e análise.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.92\textwidth]{metodologia.pdf}
+  \caption{Fluxo de trabalho: da sequência de estações de cada linha à
+    construção do grafo em espaço L, ao cálculo de métricas e à visualização.}
+  \label{fig:pipeline}
+\end{figure}
+
+\subsection{Espaços de representação}
+
+A Figura~\ref{fig:espacos} ilustra, sobre um exemplo mínimo, a diferença entre
+os espaços L e P. No espaço L as arestas seguem a adjacência física ao longo dos
+trilhos; no espaço P todas as estações de uma mesma linha ficam mutuamente
+conectadas, de modo que a distância passa a contar baldeações. Analisar os dois
+espaços permite separar propriedades da infraestrutura (espaço L) de
+propriedades da experiência de viagem (espaço P).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.86\textwidth]{espacos.pdf}
+  \caption{Representações de uma mesma sub-rede com duas linhas que se cruzam em
+    uma estação de baldeação: espaço L (adjacência física entre estações
+    consecutivas) e espaço P (adjacência por pertencimento à mesma linha).}
+  \label{fig:espacos}
+\end{figure}
+
+\subsection{Sub-rede central ilustrativa}
+
+A Figura~\ref{fig:central} mostra, a título ilustrativo, o núcleo de baldeações
+do centro expandido extraído do grafo, com o tamanho de cada vértice
+proporcional ao seu grau. Estações como Sé, Luz e Brás aparecem como pontos de
+articulação entre múltiplas linhas --- justamente as candidatas a maior
+centralidade de intermediação, a serem quantificadas no relatório final.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{central.pdf}
+  \caption{Sub-rede ilustrativa do centro expandido. O diâmetro do vértice é
+    proporcional ao grau; as cores indicam as linhas. Trata-se de um recorte
+    para fins de exposição do modelo, não de um resultado quantitativo.}
+  \label{fig:central}
+\end{figure}
+
+\subsection{Metodologia de análise}
+
+Sobre o grafo construído aplicam-se, com a biblioteca NetworkX \cite{hagberg2008}:
+\begin{enumerate}
+  \item \textbf{Caracterização estrutural:} $N$, $M$, $\langle k\rangle$,
+    distribuição de grau $P(k)$, coeficiente de agrupamento $C$, comprimento
+    característico $L$, diâmetro $D$ e eficiência global $E_{\mathrm{glob}}$.
+  \item \textbf{Mundo pequeno:} comparação de $C$ e $L$ com grafos aleatórios de
+    mesmo $N$ e $\langle k\rangle$, via índice $\sigma$.
+  \item \textbf{Centralidade:} cálculo de $C_B$ (algoritmo de Brandes), $C_C$ e
+    grau, com \emph{ranking} das estações mais centrais.
+  \item \textbf{Comunidades:} detecção por Louvain \cite{blondel2008} e
+    avaliação da modularidade $Q$, com interpretação geográfica das
+    comunidades.
+  \item \textbf{Robustez:} curvas $S(f)$ e $E_{\mathrm{glob}}(f)$ sob remoção
+    aleatória e sob remoção direcionada por $C_B$ e por grau, além do cálculo de
+    $\lambda_2$.
+\end{enumerate}
+Toda a análise é reprodutível: o grafo é serializado e os índices são
+recalculados por \emph{scripts} versionados.
+
+\subsection{Visualização tridimensional interativa}
+
+Como componente de comunicação dos resultados, desenvolveu-se uma visualização
+interativa em WebGL com a biblioteca \textbf{Three.js}. A rede é renderizada em
+três dimensões: cada estação é uma esfera cujo raio é proporcional à sua
+centralidade, colorida segundo a linha (ou destacada como \emph{hub}, quando é
+estação de baldeação); cada trecho é uma aresta luminosa. O usuário pode
+orbitar, aproximar e girar a cena, isolar linhas específicas por uma legenda
+interativa e inspecionar cada estação --- ao passar o cursor, um painel exibe
+grau, centralidade de intermediação e as conexões diretas do vértice. A
+disposição espacial é obtida por um algoritmo de layout dirigido por forças, que
+aproxima estações fortemente conectadas e evidencia visualmente os \emph{hubs} e
+as comunidades da malha.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{viz_screenshot.png}
+  \caption{Captura de tela da visualização interativa em Three.js. A rede é
+    renderizada em 3D com as cores oficiais das linhas; as esferas claras e
+    luminosas são as estações de baldeação, com tamanho proporcional à
+    centralidade de intermediação --- o aglomerado brilhante ao centro
+    corresponde ao núcleo de \emph{hubs} do centro expandido (Luz, Sé, Brás). A
+    legenda à esquerda permite isolar cada linha, e ao passar o cursor sobre uma
+    estação um painel exibe seu grau, intermediação e conexões diretas.}
+  \label{fig:viz}
+\end{figure}
+
+% =====================================================================
+\section{Divisão de Responsabilidades}
+% =====================================================================
+
+A Tabela~\ref{tab:resp} apresenta a divisão de tarefas entre os integrantes do
+grupo. As atividades foram distribuídas de modo a equilibrar carga teórica,
+implementação e redação, com pontos de integração ao final de cada etapa.
+
+\begin{table}[H]
+  \centering
+  \caption{Divisão de responsabilidades entre os integrantes.}
+  \label{tab:resp}
+  \begin{tabular}{@{}p{4.7cm}p{8.6cm}@{}}
+    \toprule
+    \textbf{Integrante} & \textbf{Responsabilidades principais} \\
+    \midrule
+    Vitor Eduardo Silva de Carvalho &
+    Coordenação do projeto; coleta e curadoria dos dados das linhas;
+    construção do grafo em espaço L e P. \\[2pt]
+    Diego Naoki Sato Hanashiro &
+    Fundamentação teórica; formalização das métricas; implementação dos cálculos
+    de centralidade e mundo pequeno em NetworkX. \\[2pt]
+    João Vitor Ribeiro Pereira &
+    Experimento de robustez (falhas e ataques); detecção de comunidades;
+    geração das figuras e análise dos resultados. \\[2pt]
+    Joaquim Argolo Valente de Azambuja &
+    Visualização 3D em Three.js; redação e revisão do artigo no padrão SBC;
+    integração final. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vspace{0.5em}
+\noindent
+\textit{Observação:} de acordo com o roteiro da disciplina, o grupo deve ter de
+cinco a seis integrantes; a lista acima deve ser complementada com o(s)
+integrante(s) restante(s) e a divisão, ajustada conforme a contribuição
+efetiva.
+
+% =====================================================================
+\bibliographystyle{sbc}
+\bibliography{refs}
+
+\end{document}
