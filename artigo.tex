@@ -354,12 +354,15 @@ Sobre o grafo construído aplicam-se, com a biblioteca NetworkX \cite{hagberg200
     $\lambda_2$.
 \end{enumerate}
 Toda a análise é reprodutível: o grafo é serializado e os índices são
-recalculados por \emph{scripts} versionados.
+recalculados por \emph{scripts} versionados, com código-fonte, dados e
+instruções de reprodução disponíveis em
+\url{https://github.com/VitorCarvalho67/GrafosMetroSP}.
 
 \subsection{Visualização tridimensional interativa}
 
 Como componente de comunicação dos resultados, desenvolveu-se uma visualização
-interativa em WebGL com a biblioteca \textbf{Three.js}. A rede é renderizada em
+interativa em WebGL com a biblioteca \textbf{Three.js}, disponível publicamente
+em \url{http://metro-sp.solveweb.com.br/}. A rede é renderizada em
 três dimensões: cada estação é uma esfera cujo raio é proporcional à sua
 centralidade, colorida segundo a linha (ou destacada como \emph{hub}, quando é
 estação de baldeação); cada trecho é uma aresta luminosa. O usuário pode
