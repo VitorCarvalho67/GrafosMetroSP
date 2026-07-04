@@ -1,5 +1,5 @@
 PROJETO — Topologia da Malha Metroferroviária de São Paulo (Teoria dos Grafos)
-Disciplina: Comunicação e Redes (UFABC) — versão PRELIMINAR
+Disciplina: Comunicação e Redes (UFABC)
 
 CONTEÚDO
   artigo.tex          Artigo no padrão SBC (fonte principal)
