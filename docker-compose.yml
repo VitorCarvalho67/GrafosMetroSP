@@ -1,0 +1,28 @@
+services:
+  grafos-metro-sp:
+    image: nginx:alpine
+    container_name: grafos-metro-sp
+    restart: unless-stopped
+    # Serve o diretório do projeto como site estático (visualização Three.js).
+    # O nginx.conf define a visualização como index e esconde os fontes.
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "8888:80"
+    networks:
+      - npm_network
+    # O watchdog do host (cron) reinicia containers "unhealthy".
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  # mesma rede do nginx-proxy-manager, para ele alcançar 'grafos-metro-sp:80'.
+  # Rede externa, já existente — NÃO é criada nem alterada por este compose.
+  npm_network:
+    external: true
+    name: solveweb-site_web
