@@ -53,10 +53,10 @@ LINES = {
 
     "17-Ouro": ["Morumbi","Vereador Jose Diniz","Brooklin Paulista","Campo Belo"],
 
-    "6-Laranja": ["Brasilandia","Maristela","Itaberaba-Hospital Vila Penteado",
-        "Joao Paulo I","Freguesia do O","Santa Marina","Agua Branca","SESC-Pompeia",
-        "Perdizes","PUC-Cardoso de Almeida","FAAP-Pacaembu","Higienopolis-Mackenzie",
-        "14 Bis-Saracura","Bela Vista","Sao Joaquim"],
+    # Trecho em operação (inaugurado em jul/2026): Joao Paulo I -> Perdizes.
+    # Baldeacao com a 7-Rubi em Agua Branca. Ver mapa oficial Metro/CPTM.
+    "6-Laranja": ["Joao Paulo I","Freguesia do O","Santa Marina","Agua Branca",
+        "SESC-Pompeia","Perdizes"],
 
     "7-Rubi": ["Luz","Palmeiras-Barra Funda","Agua Branca","Lapa","Piqueri","Pirituba",
         "Vila Clarice","Jaragua","Vila Aurora","Perus","Caieiras","Franco da Rocha",
