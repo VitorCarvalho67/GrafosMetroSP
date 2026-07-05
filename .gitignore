@@ -1,4 +1,17 @@
-# Arquivos gerados pela compilacao LaTeX (tectonic)
+# Python
+__pycache__/
+*.pyc
+
+# Figuras auxiliares geradas por figuras.py (não usadas no artigo)
+modelo3d.pdf
+modelo3d.png
+
+# Artefatos de compilação do LaTeX (tectonic/pdflatex)
 artigo.pdf
-artigo.log
-artigo.blg
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.toc
+*.synctex.gz

@@ -11,6 +11,7 @@ LINE_COLORS = {
     "3-Vermelha":  "#EE3B33",
     "4-Amarela":   "#FFD500",
     "5-Lilas":     "#7C4D9F",
+    "6-Laranja":   "#F58220",
     "15-Prata":    "#9AA0A6",
     "17-Ouro":     "#C6A951",
     "7-Rubi":      "#9E1B4B",
@@ -51,6 +52,11 @@ LINES = {
         "Jardim Colonial"],
 
     "17-Ouro": ["Morumbi","Vereador Jose Diniz","Brooklin Paulista","Campo Belo"],
+
+    "6-Laranja": ["Brasilandia","Maristela","Itaberaba-Hospital Vila Penteado",
+        "Joao Paulo I","Freguesia do O","Santa Marina","Agua Branca","SESC-Pompeia",
+        "Perdizes","PUC-Cardoso de Almeida","FAAP-Pacaembu","Higienopolis-Mackenzie",
+        "14 Bis-Saracura","Bela Vista","Sao Joaquim"],
 
     "7-Rubi": ["Luz","Palmeiras-Barra Funda","Agua Branca","Lapa","Piqueri","Pirituba",
         "Vila Clarice","Jaragua","Vila Aurora","Perus","Caieiras","Franco da Rocha",

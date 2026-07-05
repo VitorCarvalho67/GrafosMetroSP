@@ -14,12 +14,12 @@ Vitor Eduardo Silva de Carvalho · Diego Naoki Sato Hanashiro · João Vitor Rib
 
 | Métrica | Valor |
 |---|---|
-| Estações (vértices, N) | 171 |
-| Conexões (arestas, M) | 184 |
-| Grau médio ⟨k⟩ | 2.15 |
-| Modularidade (Q) | 0.816 |
-| Comunidades detectadas | 15 |
-| Linhas (metrô + CPTM) | 14 |
+| Estações (vértices, N) | 183 |
+| Conexões (arestas, M) | 198 |
+| Grau médio ⟨k⟩ | 2.16 |
+| Modularidade (Q) | 0.812 |
+| Comunidades detectadas | 14 |
+| Linhas (metrô + CPTM) | 15 |
 
 ## Estrutura do repositório
 
