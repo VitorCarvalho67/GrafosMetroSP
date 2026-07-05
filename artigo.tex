@@ -18,6 +18,24 @@
 \urlstyle{same}
 \sloppy
 
+% Evita que o padrao SBC (\flushbottom) estique o espaco vertical e crie
+% vaos grandes de espaco em branco nas paginas com figuras/tabelas grandes.
+\raggedbottom
+
+
+\renewenvironment{abstract}{%
+  \vspace{6pt}\begin{center}\normalfont\bfseries Abstract\end{center}\nopagebreak
+  \list{}{\leftmargin=1cm\rightmargin=\leftmargin
+          \listparindent=1.27cm\itemindent=\listparindent}%
+  \item[]\normalfont\small}%
+  {\endlist\vspace{4pt}}
+\renewenvironment{resumo}{%
+  \vspace{6pt}\begin{center}\normalfont\bfseries Resumo\end{center}\nopagebreak
+  \list{}{\leftmargin=1cm\rightmargin=\leftmargin
+          \listparindent=1.27cm\itemindent=\listparindent}%
+  \item[]\normalfont\small}%
+  {\endlist\vspace{4pt}}
+
 \title{Topologia da Malha Metroferroviária de São Paulo:\\
   uma Análise via Teoria dos Grafos}
 
@@ -33,7 +51,48 @@
 
 \begin{document}
 
-\maketitle
+\thispagestyle{empty}
+\vspace*{-0.6cm}
+
+\begin{center}
+  \noindent\rule{\textwidth}{1pt}\\[12pt] % Linha superior
+  {\LARGE\bfseries Topologia da Malha Metroferroviária de São Paulo:\\[4pt]
+   uma Análise via Teoria dos Grafos\par}
+  \vspace{12pt}
+  \noindent\rule{\textwidth}{3pt} % Linha inferior
+\end{center}
+
+\vspace{20pt}
+
+% ---- Autores em grade (3 + 1), cada um com e-mail individual ----
+\begin{center}
+  \begin{minipage}[t]{0.32\textwidth}\centering
+    \textbf{Vitor Eduardo Silva de Carvalho}\\[4pt]
+    {\footnotesize vitor.eduardo@aluno.ufabc.edu.br}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.32\textwidth}\centering
+    \textbf{Diego Naoki Sato Hanashiro}\\[4pt]
+    {\footnotesize diego.hanashiro@aluno.ufabc.edu.br}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.32\textwidth}\centering
+    \textbf{João Vitor Ribeiro Pereira}\\[4pt]
+    {\footnotesize joao.pereira@aluno.ufabc.edu.br}
+  \end{minipage}
+
+  \vspace{16pt}
+
+  \begin{minipage}[t]{0.45\textwidth}\centering
+    \textbf{Joaquim Argolo Valente de Azambuja}\\[4pt]
+    {\footnotesize joaquim.azambuja@aluno.ufabc.edu.br}
+  \end{minipage}
+\end{center}
+
+\vspace{8pt}
+{\centering\footnotesize
+  Bacharelado em Ciência e Tecnologia (BC\&T) --- Universidade Federal do ABC (UFABC)\\
+  Av.\ dos Estados, 5001 --- 09210-580 --- Santo André --- SP --- Brasil\par}
+
+\vspace{16pt}
 
 \begin{abstract}
   The metropolitan rail network of São Paulo is the largest of its kind in
@@ -362,6 +421,7 @@ recalculados por \emph{scripts} versionados, com código-fonte, dados e
 instruções de reprodução disponíveis em
 \url{https://github.com/VitorCarvalho67/GrafosMetroSP}.
 
+\clearpage
 \subsection{Visualização tridimensional interativa}
 
 Como componente de comunicação dos resultados, desenvolveu-se uma visualização
@@ -377,7 +437,7 @@ disposição espacial é obtida por um algoritmo de layout dirigido por forças,
 aproxima estações fortemente conectadas e evidencia visualmente os \emph{hubs} e
 as comunidades da malha.
 
-\begin{figure}[H]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{viz_screenshot.png}
   \caption{Captura de tela da visualização interativa em Three.js. A rede é
@@ -391,6 +451,8 @@ as comunidades da malha.
 \end{figure}
 
 % =====================================================================
+% Comeca a secao 5 em pagina nova (descarrega tambem a Figura 4 pendente).
+\clearpage
 \section{Divisão de Responsabilidades}
 % =====================================================================
 
@@ -398,7 +460,7 @@ A Tabela~\ref{tab:resp} apresenta a divisão de tarefas entre os integrantes do
 grupo. As atividades foram distribuídas de modo a equilibrar carga teórica,
 implementação e redação, com pontos de integração ao final de cada etapa.
 
-\begin{table}[H]
+\begin{table}[ht]
   \centering
   \caption{Divisão de responsabilidades entre os integrantes.}
   \label{tab:resp}
@@ -423,6 +485,9 @@ implementação e redação, com pontos de integração ao final de cada etapa.
 \end{table}
 
 % =====================================================================
+% Descarrega quaisquer figuras/tabelas pendentes antes das referencias,
+% para que nao ``vazem'' para o meio da lista bibliografica.
+\clearpage
 \bibliographystyle{sbc}
 \bibliography{refs}
 
