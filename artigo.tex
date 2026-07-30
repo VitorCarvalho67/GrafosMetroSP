@@ -214,8 +214,12 @@ consecutivas. Vértices são \emph{estações}; arestas são \emph{trechos de vi
 diretos; na versão não ponderada $w_{ij}=1$ (opcionalmente, distância ou tempo).
 Estações de baldeação acumulam arestas de várias linhas, tornando-se pontos de
 articulação. As métricas são calculadas com a biblioteca
-NetworkX~\cite{hagberg2008}; código, dados e instruções de reprodução estão em
-\url{https://github.com/VitorCarvalho67/GrafosMetroSP}.
+NetworkX~\cite{hagberg2008}. Como camada complementar de exploração,
+desenvolvemos visualizações interativas em \emph{Three.js}/WebGL\footnote{\url{https://threejs.org}}:
+um grafo 3D navegável da malha, um explorador com planejador de rota e mapa de
+calor, a comparação lado a lado das três redes e um globo 3D com São Paulo,
+Londres e Nova York. Código, dados, as visualizações e instruções de reprodução
+estão em \url{https://github.com/VitorCarvalho67/GrafosMetroSP}.
 
 % =====================================================================
 \section{Resultados}
