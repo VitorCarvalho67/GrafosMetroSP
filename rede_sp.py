@@ -51,8 +51,10 @@ LINES = {
         "Vila Uniao","Jardim Planalto","Sapopemba","Fazenda da Juta","Sao Mateus",
         "Jardim Colonial"],
 
-    "17-Ouro": ["Sao Paulo-Morumbi","Morumbi","Chacara Flora","Vila Cordeiro",
-        "Agua Espraiada","Vereador Jose Diniz","Brooklin Paulista","Campo Belo","Congonhas"],
+    # Operacao transitoria em "Y" (2026): 8 estacoes. Baldeacao com a 5-Lilas em
+    # Campo Belo. Sao Paulo-Morumbi pertence a Linha 4 (nao faz parte do trecho atual).
+    "17-Ouro": ["Morumbi","Chucri Zaidan","Vila Cordeiro","Campo Belo","Vereador Jose Diniz",
+        "Brooklin Paulista","Jardim Aeroporto","Aeroporto de Congonhas","Washington Luis"],
 
     # Trecho em operação (inaugurado em jul/2026): Joao Paulo I -> Perdizes.
     # Baldeacao com a 7-Rubi em Agua Branca. Ver mapa oficial Metro/CPTM.
@@ -68,11 +70,11 @@ LINES = {
         "Imperatriz Leopoldina","Presidente Altino","Osasco","Comandante Sampaio",
         "Quitauna","General Miguel Costa","Carapicuiba","Santa Terezinha","Antonio Joao",
         "Barueri","Jardim Belval","Jardim Silveira","Jandira","Sagrado Coracao",
-        "Engenheiro Cardoso","Itapevi"],
+        "Engenheiro Cardoso","Itapevi","Amador Bueno"],
 
     "9-Esmeralda": ["Osasco","Presidente Altino","Ceasa","Villa Lobos-Jaguare",
         "Cidade Universitaria","Pinheiros","Hebraica-Reboucas","Cidade Jardim",
-        "Vila Olimpia","Berrini","Morumbi","Granja Julieta","Santo Amaro","Socorro",
+        "Vila Olimpia","Berrini","Morumbi","Granja Julieta","Joao Dias","Santo Amaro","Socorro",
         "Jurubatuba","Autodromo","Primavera-Interlagos","Grajau",
         "Mendes-Vila Natal","Varginha"],
 
@@ -81,7 +83,7 @@ LINES = {
         "Guapituba","Ribeirao Pires","Rio Grande da Serra"],
 
     "11-Coral": ["Luz","Bras","Tatuape","Corinthians-Itaquera","Dom Bosco","Jose Bonifacio",
-        "Guaianases","Antonio Gomes","Ferraz de Vasconcelos","Poa","Calmon Viana","Suzano",
+        "Guaianases","Antonio Gianetti Neto","Ferraz de Vasconcelos","Poa","Calmon Viana","Suzano",
         "Jundiapeba","Braz Cubas","Mogi das Cruzes","Estudantes"],
 
     "12-Safira": ["Bras","Tatuape","Engenheiro Goulart","USP Leste","Comendador Ermelino",

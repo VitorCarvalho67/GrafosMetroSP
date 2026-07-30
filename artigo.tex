@@ -94,7 +94,8 @@
   centrality, community structure and small-world indices --- assessing
   robustness under random failures and targeted attacks. The network proves
   sparse and strongly radial: it is \emph{neither} scale-free \emph{nor} a small
-  world in space-L ($\sigma=0.43$), is dominated by the Luz and Brás hubs, and
+  world in space-L ($\sigma=0.51$), is dominated by the high-centrality stations
+  Luz and Brás, and
   collapses under targeted attacks. Modeled identically, London and New York are
   denser and more redundant. We also quantify the new Line 6-Orange and show that
   an orbital line would improve connectivity far more than new radial ones.
@@ -106,8 +107,9 @@
   topologia --- grau, eficiência global, agrupamento, centralidade, comunidades e
   índices de mundo pequeno ---, avaliando a robustez sob falhas aleatórias e
   ataques dirigidos. A rede mostra-se esparsa e fortemente radial: \emph{não} é
-  livre de escala \emph{nem} de mundo pequeno no espaço L ($\sigma=0{,}43$), é
-  dominada pelos \emph{hubs} Luz e Brás e colapsa sob ataques. Modeladas do mesmo
+  livre de escala \emph{nem} de mundo pequeno no espaço L ($\sigma=0{,}51$), é
+  dominada pelas estações de alta centralidade Luz e Brás e colapsa sob ataques
+  dirigidos. Modeladas do mesmo
   modo, Londres e Nova York são mais densas e redundantes. Quantificamos ainda a
   Linha 6-Laranja e mostramos que uma linha orbital ajudaria muito mais que novos
   raios.
@@ -121,12 +123,12 @@ Sistemas de transporte de massa são redes complexas: estações ligadas por
 trechos de via cujo arranjo global determina eficiência, vulnerabilidade e
 capacidade de reorganização~\cite{newman2003}. A teoria dos grafos revelou que
 metrôs de cidades muito distintas compartilham assinaturas estruturais ---
-caráter de mundo pequeno, poucos \emph{hubs} de alta centralidade e distribuições
+caráter de mundo pequeno, poucas estações de alta centralidade e distribuições
 de grau de cauda longa~\cite{latora2002,sen2003,derrible2010}.
 
 A Região Metropolitana de São Paulo possui a maior rede sobre trilhos do Brasil:
 em meados de 2026, com a Linha 6-Laranja, a malha integrada (Metrô e CPTM) soma
-cerca de $393$~km, $15$ linhas e $182$ estações~\cite{metrosp2026,cptm2026}.
+cerca de $393$~km, $15$ linhas e $185$ estações~\cite{metrosp2026,cptm2026}.
 Apesar da escala, ela raramente é estudada sob a ótica formal de grafos. Este
 trabalho tem por \textbf{objetivos}: (i) modelar a malha como grafo e
 caracterizar sua topologia; (ii) identificar as estações estruturalmente
@@ -163,8 +165,9 @@ $C$ muito maior, medido por $\sigma=(C/C_{\mathrm{rand}})/(L/L_{\mathrm{rand}})$
 com $\sigma>1$ indicando o comportamento. \emph{Mundo pequeno} (alto $C$, baixo
 $L$) não deve ser confundido com \emph{livre de escala}~\cite{barabasi1999}, que
 se define pela presença de \emph{hubs} e cauda longa em $P(k)$: são propriedades
-independentes. Aqui, ``\emph{hub}'' designa apenas estação de alto grau/
-centralidade, não evidência de rede livre de escala.
+independentes. Reservamos, por isso, o termo \emph{hub} para o sentido de rede
+livre de escala e designamos as estações mais conectadas ou centrais como
+\emph{estações de alta centralidade}.
 
 A criticidade de uma estação é medida pela centralidade de
 intermediação~\cite{freeman1977},
@@ -218,14 +221,14 @@ NetworkX~\cite{hagberg2008}; código, dados e instruções de reprodução estã
 \section{Resultados}
 % =====================================================================
 
-\paragraph{Estrutura (Q1--Q2).} A malha é conexa, com $N=182$, $M=196$ e
-$\langle k\rangle=2{,}15$ (Tabela~\ref{tab:metricas}). O grau máximo é $6$ (Luz)
+\paragraph{Estrutura (Q1--Q2).} A malha é conexa, com $N=185$, $M=198$ e
+$\langle k\rangle=2{,}14$ (Tabela~\ref{tab:metricas}). O grau máximo é $6$ (Luz)
 e $79\%$ das estações têm grau $2$: não há cauda longa, logo a rede \emph{não} é
-livre de escala. O comprimento característico é alto ($L=13{,}5$; $D=34$) e a
-eficiência global $E_{\mathrm{glob}}=0{,}112$. Comparando a $300$ grafos
+livre de escala. O comprimento característico é alto ($L=14{,}0$; $D=37$) e a
+eficiência global $E_{\mathrm{glob}}=0{,}109$. Comparando a $300$ grafos
 aleatórios, $C\approx C_{\mathrm{rand}}$ mas $L\gg L_{\mathrm{rand}}$, dando
-$\sigma=0{,}43<1$: no espaço L a rede \emph{não} é de mundo pequeno. Essa
-propriedade só surge no espaço P ($L_P=2{,}57$, $D_P=5$; $\approx 1{,}6$ baldeação
+$\sigma=0{,}51<1$: no espaço L a rede \emph{não} é de mundo pequeno. Essa
+propriedade só surge no espaço P ($L_P=2{,}61$, $D_P=6$; $\approx 1{,}6$ baldeação
 entre estações quaisquer), que reflete a experiência de viagem.
 
 \begin{table}[ht]
@@ -235,18 +238,18 @@ entre estações quaisquer), que reflete a experiência de viagem.
   \small
   \begin{tabular}{@{}lr lr@{}}
     \toprule
-    Estações $N$ & 182 & Agrupamento $C$ & 0{,}009 \\
-    Trechos $M$ & 196 & Mundo pequeno $\sigma$ & 0{,}43 \\
-    Grau médio $\langle k\rangle$ & 2{,}15 & Modularidade $Q$ & 0{,}815 \\
-    Compr.\ caract.\ $L$ & 13{,}47 & Comunidades & 14 \\
-    Diâmetro $D$ & 34 & Robustez $r_T$ & 0{,}082 \\
-    Eficiência $E_{\mathrm{glob}}$ & 0{,}112 & Baldeações & 24 \\
+    Estações $N$ & 185 & Agrupamento $C$ & 0{,}009 \\
+    Trechos $M$ & 198 & Mundo pequeno $\sigma$ & 0{,}51 \\
+    Grau médio $\langle k\rangle$ & 2{,}14 & Modularidade $Q$ & 0{,}817 \\
+    Compr.\ caract.\ $L$ & 14{,}05 & Comunidades & 14 \\
+    Diâmetro $D$ & 37 & Robustez $r_T$ & 0{,}076 \\
+    Eficiência $E_{\mathrm{glob}}$ & 0{,}109 & Baldeações & 23 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\paragraph{Hubs (Q1).} As estações de maior intermediação
-(Figura~\ref{fig:hubs}) são Luz ($C_B=0{,}47$) e Brás ($0{,}46$), seguidas de
+\paragraph{Estações de alta centralidade (Q1).} As estações de maior intermediação
+(Figura~\ref{fig:hubs}) são Brás e Luz (ambas com $C_B\approx 0{,}44$), seguidas de
 Tatuapé, Lapa, Tamanduateí e Barra Funda --- os complexos de baldeação do centro
 expandido, confirmando a hipótese. Estações de grau $2$ com alta intermediação
 (Juventus-Mooca, Ipiranga) são pontos de articulação da Linha 10 cuja remoção
@@ -260,9 +263,9 @@ isola ramais.
 \end{figure}
 
 \paragraph{Comunidades e regiões (Q4).} Louvain recupera $14$ comunidades com
-$Q=0{,}815$ (alto, típico de redes em corredores), com claro sentido geográfico.
+$Q=0{,}817$ (alto, típico de redes em corredores), com claro sentido geográfico.
 Usando a proximidade média como acessibilidade regional, o centro expandido
-(Luz, Brás, República, Barra Funda; $\overline{C_C}=0{,}109$) é cerca de
+(Luz, Brás, República, Barra Funda; $\overline{C_C}=0{,}104$) é cerca de
 \emph{duas vezes} mais acessível que as comunidades periféricas
 ($\overline{C_C}\approx 0{,}06$): a eficiência não é homogênea no território.
 
@@ -271,7 +274,7 @@ removido, a maior componente ainda tem $56\%$); sob ataque dirigido o colapso é
 abrupto --- bastam $2\%$ das estações (Luz, Brás, Tatuapé, Lapa) para cair a
 $57\%$, e $4\%$ para $19\%$ (Figura~\ref{fig:robustez}). A robustez integrada é
 $0{,}15$ (falha) contra $0{,}04$ (ataque). A rede resiste a falhas difusas mas é
-muito vulnerável à perda de poucos \emph{hubs} centrais.
+muito vulnerável à perda de poucas estações de altíssima conectividade.
 
 \begin{figure}[ht]
   \centering
@@ -285,7 +288,7 @@ muito vulnerável à perda de poucos \emph{hubs} centrais.
 Underground} e o \emph{New York City Subway} do mesmo modo, a partir dos mapas
 oficiais~\cite{tfl2024,mta2024} (Tabela~\ref{tab:tres}). Nossos $r_T$ calculados
 coincidem com os publicados por Derrible e Kennedy~\cite{derrible2010} para São
-Paulo ($0{,}082$ vs.\ $0{,}080$) e Londres ($0{,}143$ vs.\ $0{,}140$), validando
+Paulo ($0{,}076$ vs.\ $0{,}080$) e Londres ($0{,}143$ vs.\ $0{,}140$), validando
 o método; Nova York, modelada por \emph{serviços} (linhas que compartilham
 trilhos), tem $r_T$ superestimado. O contraste-chave está no mundo pequeno: São
 Paulo é a \emph{única} das três com $\sigma<1$; Londres ($1{,}86$) e Nova York
@@ -305,7 +308,7 @@ Tóquio~\cite{derrible2010}.
     \toprule
     & $N$ & $\langle k\rangle$ & $C$ & $\sigma$ & Baldeações & $r_T$ \\
     \midrule
-    São Paulo & 182 & 2{,}15 & 0{,}009 & \textbf{0{,}43} & 0{,}132 & 0{,}082 \\
+    São Paulo & 185 & 2{,}14 & 0{,}009 & \textbf{0{,}51} & 0{,}124 & 0{,}076 \\
     Londres   & 258 & 2{,}28 & 0{,}022 & 1{,}86 & 0{,}236 & 0{,}143 \\
     Nova York & 422 & 2{,}33 & 0{,}027 & 3{,}14 & 0{,}360$^\ast$ & 0{,}166$^\ast$ \\
     \bottomrule
@@ -323,7 +326,7 @@ Tóquio~\cite{derrible2010}.
 marginal ($+0{,}3\%$ de eficiência). A \emph{linha completa} (Brasilândia--São
 Joaquim, $15{,}3$~km), com três novas baldeações (Água Branca, Higienópolis-
 Mackenzie/L4, São Joaquim/L1)~\cite{agenciasp2026linha6}, eleva $E_{\mathrm{glob}}$
-em $+0{,}62\%$. Modelando linhas em projeto pelas baldeações anunciadas
+em $+0{,}65\%$. Modelando linhas em projeto pelas baldeações anunciadas
 (Tabela~\ref{tab:propostas}), as extensões \emph{radiais} pouco mudam a
 eficiência interna (seu ganho é de cobertura), enquanto a orbital \emph{20-Rosa}
 produz o maior ganho ($+2{,}4\%$): o maior déficit de São Paulo é a
