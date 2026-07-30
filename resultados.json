@@ -1,0 +1,624 @@
+{
+ "baseline": {
+  "label": "SP completa (2026)",
+  "N": 176,
+  "M": 189,
+  "avg_degree": 2.147727,
+  "max_degree": 6,
+  "min_degree": 1,
+  "connected": true,
+  "n_components": 1,
+  "L": 13.432662,
+  "diameter": 34,
+  "global_efficiency": 0.112654,
+  "avg_clustering": 0.009091,
+  "transitivity": 0.022642,
+  "assortativity": 0.217115,
+  "algebraic_connectivity": 0.008146,
+  "degree_dist": {
+   "1": 14,
+   "2": 139,
+   "6": 1,
+   "4": 8,
+   "3": 11,
+   "5": 3
+  }
+ },
+ "small_world": {
+  "C": 0.009091,
+  "L": 13.432662,
+  "C_rand": 0.009098,
+  "L_rand": 6.019797,
+  "sigma": 0.447774,
+  "n_random": 300
+ },
+ "centralities": {
+  "betweenness_top": [
+   [
+    "Luz",
+    0.465,
+    6
+   ],
+   [
+    "Bras",
+    0.4629,
+    5
+   ],
+   [
+    "Tatuape",
+    0.3088,
+    5
+   ],
+   [
+    "Lapa",
+    0.2896,
+    4
+   ],
+   [
+    "Tamanduatei",
+    0.2837,
+    4
+   ],
+   [
+    "Palmeiras-Barra Funda",
+    0.2734,
+    5
+   ],
+   [
+    "Juventus-Mooca",
+    0.2316,
+    2
+   ],
+   [
+    "Ipiranga",
+    0.227,
+    2
+   ],
+   [
+    "Presidente Altino",
+    0.2088,
+    3
+   ],
+   [
+    "Pinheiros",
+    0.2044,
+    4
+   ],
+   [
+    "Paulista",
+    0.1814,
+    3
+   ],
+   [
+    "Domingos de Moraes",
+    0.1811,
+    2
+   ],
+   [
+    "Republica",
+    0.1768,
+    4
+   ],
+   [
+    "Imperatriz Leopoldina",
+    0.1762,
+    2
+   ],
+   [
+    "Morumbi",
+    0.1635,
+    3
+   ]
+  ],
+  "closeness_top": [
+   [
+    "Luz",
+    0.12,
+    6
+   ],
+   [
+    "Bras",
+    0.1189,
+    5
+   ],
+   [
+    "Republica",
+    0.1142,
+    4
+   ],
+   [
+    "Palmeiras-Barra Funda",
+    0.1132,
+    5
+   ],
+   [
+    "Juventus-Mooca",
+    0.1123,
+    2
+   ],
+   [
+    "Tatuape",
+    0.1106,
+    5
+   ],
+   [
+    "Sao Bento",
+    0.1105,
+    2
+   ],
+   [
+    "Julio Prestes",
+    0.1101,
+    2
+   ],
+   [
+    "Lapa",
+    0.1099,
+    4
+   ],
+   [
+    "Higienopolis-Mackenzie",
+    0.1096,
+    2
+   ],
+   [
+    "Se",
+    0.1088,
+    4
+   ],
+   [
+    "Pedro II",
+    0.1087,
+    2
+   ],
+   [
+    "Tiradentes",
+    0.1082,
+    2
+   ],
+   [
+    "Ipiranga",
+    0.1074,
+    2
+   ],
+   [
+    "Bresser-Mooca",
+    0.1064,
+    2
+   ]
+  ],
+  "degree_top": [
+   [
+    "Luz",
+    6
+   ],
+   [
+    "Palmeiras-Barra Funda",
+    5
+   ],
+   [
+    "Bras",
+    5
+   ],
+   [
+    "Tatuape",
+    5
+   ],
+   [
+    "Se",
+    4
+   ],
+   [
+    "Santa Cruz",
+    4
+   ],
+   [
+    "Tamanduatei",
+    4
+   ],
+   [
+    "Republica",
+    4
+   ],
+   [
+    "Pinheiros",
+    4
+   ],
+   [
+    "Santo Amaro",
+    4
+   ],
+   [
+    "Agua Branca",
+    4
+   ],
+   [
+    "Lapa",
+    4
+   ],
+   [
+    "Paraiso",
+    3
+   ],
+   [
+    "Ana Rosa",
+    3
+   ],
+   [
+    "Consolacao",
+    3
+   ]
+  ]
+ },
+ "communities": {
+  "n_communities": 15,
+  "modularity": 0.811343,
+  "sizes": [
+   16,
+   16,
+   15,
+   14,
+   12,
+   12,
+   12,
+   11,
+   11,
+   11,
+   10,
+   10,
+   9,
+   9,
+   8
+  ]
+ },
+ "robustness": {
+  "fractions": [
+   0.0,
+   0.02,
+   0.04,
+   0.06,
+   0.08,
+   0.1,
+   0.12,
+   0.14,
+   0.16,
+   0.18,
+   0.2,
+   0.22,
+   0.24,
+   0.26,
+   0.28,
+   0.3,
+   0.32,
+   0.34,
+   0.36,
+   0.38,
+   0.4,
+   0.42,
+   0.44,
+   0.46,
+   0.48,
+   0.5
+  ],
+  "random_S": {
+   "0.0": 1.0,
+   "0.02": 0.896023,
+   "0.04": 0.831061,
+   "0.06": 0.706818,
+   "0.08": 0.636742,
+   "0.1": 0.561742,
+   "0.12": 0.485795,
+   "0.14": 0.410795,
+   "0.16": 0.35928,
+   "0.18": 0.319508,
+   "0.2": 0.289583,
+   "0.22": 0.244508,
+   "0.24": 0.213258,
+   "0.26": 0.182576,
+   "0.28": 0.160985,
+   "0.3": 0.128409,
+   "0.32": 0.124053,
+   "0.34": 0.105492,
+   "0.36": 0.100568,
+   "0.38": 0.086932,
+   "0.4": 0.082386,
+   "0.42": 0.074242,
+   "0.44": 0.070455,
+   "0.46": 0.067045,
+   "0.48": 0.064205,
+   "0.5": 0.056439
+  },
+  "random_E": {
+   "0.0": 1.0,
+   "0.02": 0.885956,
+   "0.04": 0.809958,
+   "0.06": 0.71344,
+   "0.08": 0.643814,
+   "0.1": 0.580713,
+   "0.12": 0.516791,
+   "0.14": 0.455958,
+   "0.16": 0.417804,
+   "0.18": 0.384858,
+   "0.2": 0.361498,
+   "0.22": 0.329614,
+   "0.24": 0.305485,
+   "0.26": 0.284425,
+   "0.28": 0.271036,
+   "0.3": 0.243487,
+   "0.32": 0.239742,
+   "0.34": 0.222219,
+   "0.36": 0.215003,
+   "0.38": 0.20404,
+   "0.4": 0.19948,
+   "0.42": 0.192206,
+   "0.44": 0.189618,
+   "0.46": 0.1848,
+   "0.48": 0.183439,
+   "0.5": 0.170589
+  },
+  "attack_S": {
+   "0.0": 1.0,
+   "0.02": 0.573864,
+   "0.04": 0.193182,
+   "0.06": 0.119318,
+   "0.08": 0.079545,
+   "0.1": 0.0625,
+   "0.12": 0.056818,
+   "0.14": 0.039773,
+   "0.16": 0.034091,
+   "0.18": 0.028409,
+   "0.2": 0.028409,
+   "0.22": 0.028409,
+   "0.24": 0.022727,
+   "0.26": 0.022727,
+   "0.28": 0.017045,
+   "0.3": 0.017045,
+   "0.32": 0.017045,
+   "0.34": 0.017045,
+   "0.36": 0.011364,
+   "0.38": 0.011364,
+   "0.4": 0.011364,
+   "0.42": 0.011364,
+   "0.44": 0.011364,
+   "0.46": 0.011364,
+   "0.48": 0.011364,
+   "0.5": 0.011364
+  },
+  "attack_E": {
+   "0.0": 1.0,
+   "0.02": 0.503023,
+   "0.04": 0.321043,
+   "0.06": 0.23278,
+   "0.08": 0.19621,
+   "0.1": 0.172586,
+   "0.12": 0.154051,
+   "0.14": 0.137129,
+   "0.16": 0.125681,
+   "0.18": 0.115528,
+   "0.2": 0.108598,
+   "0.22": 0.098223,
+   "0.24": 0.091646,
+   "0.26": 0.08328,
+   "0.28": 0.077107,
+   "0.3": 0.070394,
+   "0.32": 0.064648,
+   "0.34": 0.055895,
+   "0.36": 0.051902,
+   "0.38": 0.054292,
+   "0.4": 0.057424,
+   "0.42": 0.058592,
+   "0.44": 0.060386,
+   "0.46": 0.063618,
+   "0.48": 0.063617,
+   "0.5": 0.067248
+  },
+  "R_random": 0.154614,
+  "R_attack": 0.038864,
+  "E0": 0.112654
+ },
+ "space_p": {
+  "N": 176,
+  "M": 1544,
+  "L": 2.563442,
+  "diameter": 6,
+  "avg_degree": 17.545455
+ },
+ "line6_current": {
+  "with": {
+   "N": 176,
+   "M": 189,
+   "Eglob": 0.112654,
+   "L": 13.432662,
+   "components": 1
+  },
+  "without": {
+   "N": 171,
+   "M": 184,
+   "Eglob": 0.112437,
+   "L": 13.55989,
+   "components": 1
+  }
+ },
+ "region_efficiency": [
+  {
+   "id": 0,
+   "size": 16,
+   "mean_closeness": 0.0593,
+   "mean_betweenness": 0.0307,
+   "sample": [
+    "Granja Julieta",
+    "Brooklin",
+    "Santo Amaro",
+    "Borba Gato"
+   ]
+  },
+  {
+   "id": 1,
+   "size": 16,
+   "mean_closeness": 0.0846,
+   "mean_betweenness": 0.1002,
+   "sample": [
+    "Juventus-Mooca",
+    "Ipiranga",
+    "Tamanduatei",
+    "Sacoma"
+   ]
+  },
+  {
+   "id": 2,
+   "size": 15,
+   "mean_closeness": 0.0885,
+   "mean_betweenness": 0.1112,
+   "sample": [
+    "Oscar Freire",
+    "Imperatriz Leopoldina",
+    "Fradique Coutinho",
+    "Presidente Altino"
+   ]
+  },
+  {
+   "id": 3,
+   "size": 14,
+   "mean_closeness": 0.1097,
+   "mean_betweenness": 0.1322,
+   "sample": [
+    "Luz",
+    "Bras",
+    "Republica",
+    "Palmeiras-Barra Funda"
+   ]
+  },
+  {
+   "id": 4,
+   "size": 12,
+   "mean_closeness": 0.0942,
+   "mean_betweenness": 0.0618,
+   "sample": [
+    "Higienopolis-Mackenzie",
+    "Paulista",
+    "Liberdade",
+    "Consolacao"
+   ]
+  },
+  {
+   "id": 5,
+   "size": 12,
+   "mean_closeness": 0.0756,
+   "mean_betweenness": 0.1086,
+   "sample": [
+    "Hebraica-Reboucas",
+    "Cidade Jardim",
+    "Hospital Sao Paulo",
+    "Vila Olimpia"
+   ]
+  },
+  {
+   "id": 6,
+   "size": 12,
+   "mean_closeness": 0.0622,
+   "mean_betweenness": 0.0604,
+   "sample": [
+    "Vila Clarice",
+    "Jaragua",
+    "Vila Aurora",
+    "Perus"
+   ]
+  },
+  {
+   "id": 7,
+   "size": 11,
+   "mean_closeness": 0.0556,
+   "mean_betweenness": 0.0552,
+   "sample": [
+    "General Miguel Costa",
+    "Carapicuiba",
+    "Santa Terezinha",
+    "Antonio Joao"
+   ]
+  },
+  {
+   "id": 8,
+   "size": 11,
+   "mean_closeness": 0.0626,
+   "mean_betweenness": 0.0495,
+   "sample": [
+    "Guaianases",
+    "Antonio Gomes",
+    "Ferraz de Vasconcelos",
+    "Poa"
+   ]
+  },
+  {
+   "id": 9,
+   "size": 11,
+   "mean_closeness": 0.0792,
+   "mean_betweenness": 0.0384,
+   "sample": [
+    "Engenheiro Goulart",
+    "USP Leste",
+    "Guarulhos-CECAP",
+    "Comendador Ermelino"
+   ]
+  },
+  {
+   "id": 10,
+   "size": 10,
+   "mean_closeness": 0.0662,
+   "mean_betweenness": 0.0499,
+   "sample": [
+    "Oratorio",
+    "Sao Lucas",
+    "Camilo Haddad",
+    "Vila Tolstoi"
+   ]
+  },
+  {
+   "id": 11,
+   "size": 10,
+   "mean_closeness": 0.0962,
+   "mean_betweenness": 0.0839,
+   "sample": [
+    "Lapa",
+    "Agua Branca",
+    "Domingos de Moraes",
+    "Piqueri"
+   ]
+  },
+  {
+   "id": 12,
+   "size": 9,
+   "mean_closeness": 0.0772,
+   "mean_betweenness": 0.0557,
+   "sample": [
+    "Ana Rosa",
+    "Chacara Klabin",
+    "Vila Mariana",
+    "Santa Cruz"
+   ]
+  },
+  {
+   "id": 13,
+   "size": 9,
+   "mean_closeness": 0.0904,
+   "mean_betweenness": 0.0521,
+   "sample": [
+    "Corinthians-Itaquera",
+    "Carrao",
+    "Dom Bosco",
+    "Artur Alvim"
+   ]
+  },
+  {
+   "id": 14,
+   "size": 8,
+   "mean_closeness": 0.0821,
+   "mean_betweenness": 0.0391,
+   "sample": [
+    "Tiradentes",
+    "Armenia",
+    "Portuguesa-Tiete",
+    "Carandiru"
+   ]
+  }
+ ]
+}

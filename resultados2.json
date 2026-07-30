@@ -1,0 +1,124 @@
+{
+ "derrible_sp": {
+  "N": 176,
+  "lines": 15,
+  "n_transfer": 23,
+  "transfer_ratio": 0.1307,
+  "termini": 14,
+  "mu": 14,
+  "e_reduced": 100,
+  "rT": 0.0795
+ },
+ "derrible_table": {
+  "Berlim": [
+   170,
+   9,
+   0.0706,
+   0.1059
+  ],
+  "Nova York": [
+   422,
+   9,
+   0.0877,
+   0.1114
+  ],
+  "Moscou": [
+   173,
+   12,
+   0.1387,
+   0.1618
+  ],
+  "Madri": [
+   190,
+   13,
+   0.1895,
+   0.1895
+  ],
+  "Osaka": [
+   121,
+   8,
+   0.1488,
+   0.1983
+  ],
+  "Seul": [
+   286,
+   11,
+   0.2238,
+   0.1888
+  ],
+  "Paris": [
+   297,
+   14,
+   0.1684,
+   0.1818
+  ],
+  "Londres": [
+   306,
+   13,
+   0.1405,
+   0.183
+  ],
+  "Toquio": [
+   202,
+   13,
+   0.2525,
+   0.2228
+  ]
+ },
+ "line6_full": {
+  "new_stations": 5,
+  "eff_existing_before": 0.11265,
+  "eff_existing_after": 0.11298,
+  "eff_gain_pct": 0.29,
+  "Eglob_before": 0.11265,
+  "Eglob_after": 0.11337,
+  "L_before": 13.433,
+  "L_after": 13.302
+ },
+ "proposed": [
+  {
+   "name": "6-Laranja (completa)",
+   "eff_gain_pct": 0.29,
+   "anchors": 8,
+   "km": 15.3,
+   "cost_bi": 18.1,
+   "eff_per_bi": 0.016
+  },
+  {
+   "name": "19-Celeste",
+   "eff_gain_pct": 0.0,
+   "anchors": 1,
+   "km": 17.6,
+   "cost_bi": 20.8,
+   "eff_per_bi": 0.0
+  },
+  {
+   "name": "20-Rosa",
+   "eff_gain_pct": 2.13,
+   "anchors": 4,
+   "km": 31.1,
+   "cost_bi": 36.8,
+   "eff_per_bi": 0.058
+  },
+  {
+   "name": "22-Marrom",
+   "eff_gain_pct": 0.0,
+   "anchors": 1,
+   "km": 29.0,
+   "cost_bi": 34.3,
+   "eff_per_bi": 0.0
+  },
+  {
+   "name": "16-Violeta",
+   "eff_gain_pct": 0.0,
+   "anchors": 2,
+   "km": 32.0,
+   "cost_bi": 37.9,
+   "eff_per_bi": 0.0
+  }
+ ],
+ "unit_cost": {
+  "subterraneo_bi_per_km": 1.183,
+  "monotrilho_bi_per_km": 0.891
+ }
+}

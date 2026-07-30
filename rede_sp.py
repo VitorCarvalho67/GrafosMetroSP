@@ -51,7 +51,8 @@ LINES = {
         "Vila Uniao","Jardim Planalto","Sapopemba","Fazenda da Juta","Sao Mateus",
         "Jardim Colonial"],
 
-    "17-Ouro": ["Morumbi","Vereador Jose Diniz","Brooklin Paulista","Campo Belo"],
+    "17-Ouro": ["Sao Paulo-Morumbi","Morumbi","Chacara Flora","Vila Cordeiro",
+        "Agua Espraiada","Vereador Jose Diniz","Brooklin Paulista","Campo Belo","Congonhas"],
 
     # Trecho em operação (inaugurado em jul/2026): Joao Paulo I -> Perdizes.
     # Baldeacao com a 7-Rubi em Agua Branca. Ver mapa oficial Metro/CPTM.
@@ -72,7 +73,8 @@ LINES = {
     "9-Esmeralda": ["Osasco","Presidente Altino","Ceasa","Villa Lobos-Jaguare",
         "Cidade Universitaria","Pinheiros","Hebraica-Reboucas","Cidade Jardim",
         "Vila Olimpia","Berrini","Morumbi","Granja Julieta","Santo Amaro","Socorro",
-        "Jurubatuba","Autodromo","Primavera-Interlagos","Grajau"],
+        "Jurubatuba","Autodromo","Primavera-Interlagos","Grajau",
+        "Mendes-Vila Natal","Varginha"],
 
     "10-Turquesa": ["Luz","Bras","Juventus-Mooca","Ipiranga","Tamanduatei",
         "Sao Caetano do Sul","Utinga","Prefeito Saladino","Santo Andre","Capuava","Maua",
